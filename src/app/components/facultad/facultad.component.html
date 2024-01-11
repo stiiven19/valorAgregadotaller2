@@ -5,28 +5,198 @@
         <div class="row">
             <div class="col-4">
                 @if (programas.length > 0) {
-                <select (change)="onChange($event)">
-                    @for (programa of programas; track programa.id) {
-                    <option [value]="programa.id">{{programa.nombre}}</option>
-                    }
-                </select>
+                    <select (change)="onChange($event)">
+                        @for (programa of programas; track programa.id) {
+                            <option [value]="programa.id">{{programa.nombre}}</option>
+                        }
+                    </select>
                 }
             </div>
             <div class="row">
                 <div class="col-4">
                     @if (programaId.length > 0) {
-                    <select name="" id="estudiantes">
-                        @for (estudiante of estudiantesSeleccionados; track estudiante.id) {
-                        <option [value]="estudiante.id">{{estudiante.nombre}}</option>
-                        }
-                    </select>
+                        <select name="" id="estudiantes" (change)="onEstudianteChange($event)">
+                            @for (estudiante of estudiantesSeleccionados; track estudiante.id) {
+                                <option [value]="estudiante.id">{{estudiante.nombre}}</option>
+                            }
+                        </select>
                     }
                 </div>
             </div>
             <div class="row">
-            <div class="col-6">
-            <label for="">{{programaSeleccionado.nombre}}</label>
+                <div class="col-6">
+                    <label for="">{{programaSeleccionado.nombre}}</label>
+                </div>
             </div>
+       
+            <div class="row">
+                <div class="col-12">
+                    <table class="table">
+                        <thead>
+                            <tr>
+                                <th class="w-100 text-center">Competencia</th>
+                                <th class="w-100 text-center">Saber Pro</th>
+                                <th class="w-100 text-center">% Saber Pro</th>
+                                <th class="w-100 text-center">Saber</th>
+                                <th class="w-100 text-center">% Saber</th>
+                                <th class="w-100 text-center">% Valor agregado</th>
+
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <!-- columna para mostar los nombres de la competencia -->
+                            <th >
+                            <tr>
+                                <td>lectura Critica</td>                                                                               
+                            </tr>
+
+                            <tr>                                
+                                <td>Inglés</td>                            
+                            </tr>
+
+                            <tr>                                
+                                <td>Competencias Ciudadanas</td>                            
+                            </tr>
+
+                            <tr>                               
+                                <td>Razonamiento Cuantitativo</td>                            
+                            </tr>
+
+                            <tr>                                
+                                <td>Comunicacion Escrita</td>                            
+                            </tr>
+
+
+                           
+                        </th>
+
+
+                        <th>                         
+                            <tr>
+                                <td>{{ estudianteSeleccionado.saberPro.lecturaCritica }}</td>                                                                               
+                            </tr>
+
+                            <tr>                                
+                                <td>{{ estudianteSeleccionado.saberPro.ingles }}</td>                            
+                            </tr>
+
+                            <tr>                                
+                                <td>{{ estudianteSeleccionado.saberPro.ciudadanas }}</td>                            
+                            </tr>
+
+                            <tr>                               
+                                <td>{{ estudianteSeleccionado.saberPro.razonamiento }}</td>                            
+                            </tr>
+
+                            <tr>                                
+                                <td>{{ estudianteSeleccionado.saberPro.comunicacionEscrita }}</td>                            
+                            </tr>
+
+                        </th>
+
+
+
+                        <th>                         
+                            <tr>
+                                <td>{{ estudianteSeleccionado.saberPro.lecturaCritica }}</td>                                                                               
+                            </tr>
+
+                            <tr>                                
+                                <td>{{ estudianteSeleccionado.saberPro.ingles }}</td>                            
+                            </tr>
+
+                            <tr>                                
+                                <td>{{ estudianteSeleccionado.saberPro.ciudadanas }}</td>                            
+                            </tr>
+
+                            <tr>                               
+                                <td>{{ estudianteSeleccionado.saberPro.razonamiento }}</td>                            
+                            </tr>
+
+                            <tr>                                
+                                <td>{{ estudianteSeleccionado.saberPro.comunicacionEscrita }}</td>                            
+                            </tr>
+
+                        </th>
+
+
+                        <th>                         
+                            <tr>
+                                <td>{{ estudianteSeleccionado.saberPro.lecturaCritica }}</td>                                                                               
+                            </tr>
+
+                            <tr>                                
+                                <td>{{ estudianteSeleccionado.saberPro.ingles }}</td>                            
+                            </tr>
+
+                            <tr>                                
+                                <td>{{ estudianteSeleccionado.saberPro.ciudadanas }}</td>                            
+                            </tr>
+
+                            <tr>                               
+                                <td>{{ estudianteSeleccionado.saberPro.razonamiento }}</td>                            
+                            </tr>
+
+                            <tr>                                
+                                <td>{{ estudianteSeleccionado.saberPro.comunicacionEscrita }}</td>                            
+                            </tr>
+
+                        </th>
+
+
+
+                        <th>                         
+                            <tr>
+                                <td>{{ estudianteSeleccionado.saberPro.lecturaCritica }}</td>                                                                               
+                            </tr>
+
+                            <tr>                                
+                                <td>{{ estudianteSeleccionado.saberPro.ingles }}</td>                            
+                            </tr>
+
+                            <tr>                                
+                                <td>{{ estudianteSeleccionado.saberPro.ciudadanas }}</td>                            
+                            </tr>
+
+                            <tr>                               
+                                <td>{{ estudianteSeleccionado.saberPro.razonamiento }}</td>                            
+                            </tr>
+
+                            <tr>                                
+                                <td>{{ estudianteSeleccionado.saberPro.comunicacionEscrita }}</td>                            
+                            </tr>
+
+                        </th>
+
+
+                        <th>                         
+                            <tr>
+                                <td>{{ estudianteSeleccionado.saberPro.lecturaCritica }}</td>                                                                               
+                            </tr>
+
+                            <tr>                                
+                                <td>{{ estudianteSeleccionado.saberPro.ingles }}</td>                            
+                            </tr>
+
+                            <tr>                                
+                                <td>{{ estudianteSeleccionado.saberPro.ciudadanas }}</td>                            
+                            </tr>
+
+                            <tr>                               
+                                <td>{{ estudianteSeleccionado.saberPro.razonamiento }}</td>                            
+                            </tr>
+
+                            <tr>                                
+                                <td>{{ estudianteSeleccionado.saberPro.comunicacionEscrita }}</td>                            
+                            </tr>
+
+                        </th>
+
+
+
+                        </tbody>
+                    </table>
+                </div>
             </div>
         </div>
     </div>

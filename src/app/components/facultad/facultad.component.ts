@@ -4,7 +4,6 @@ import { Programa } from '../../datos/programa';
 import { SaberPro } from '../../datos/saberpro';
 import { Estudiante } from '../../datos/estudiante';
 
-
 @Component({
   selector: 'facultad-component',
   standalone: true,
@@ -17,47 +16,49 @@ export class FacultadComponent {
   name: string = "Facultad de Ingeniería";
 
   programas = PROGRAMAS;
-  // estudiantesSeleccionados = [{id:"", nombre:""}];
-  // programaSeleccionado: Programa = {id:"",nombre:"", estudiantes:[]};
-  estudiantesSeleccionados = [{id:"", nombre:"", saberPro: {lecturaCritica: 0, ingles: 0, ciudadanas: 0, razonamiento: 0, comunicacionEscrita: 0}}];
-  programaSeleccionado: Programa = {id:"",nombre:"", estudiantes:[]};
-  // programa: Programa = {id:"",nombre:""};
+  estudiantesSeleccionados: Estudiante[] = [];
+  programaSeleccionado: Programa = { id: "", nombre: "", estudiantes: [] };
   programaId: string = "";
   estudianteId: string = "";
-  estudianteSeleccionado: Estudiante = { id:"", nombre: "", saberPro:{lecturaCritica: 0, ingles: 0, ciudadanas: 0, razonamiento: 0, comunicacionEscrita: 0}};
-  saberPro: SaberPro = {lecturaCritica: 0, ingles: 0, ciudadanas: 0, razonamiento: 0, comunicacionEscrita: 0};
-
-
-  //   programas = [{id:"52",nombre:"Ingeniería de Sistemas"}, {id:"53",nombre:"Ingeniería Civil"},
-  // {id:"54",nombre:"Ingeniería Electrónica"}];
+  estudianteSeleccionado: Estudiante = { id: "", nombre: "", saberPro: { lecturaCritica: 0, ingles: 0, ciudadanas: 0, razonamiento: 0, comunicacionEscrita: 0 } };
 
   onChange(event: any): void {
     this.programaId = event.target.value;
     this.buscarPrograma(this.programaId);
   }
-  
+
   buscarPrograma(programaId: string): void {
     for (let index = 0; index < this.programas.length; index++) {
       const element = this.programas[index];
       if (element.id === programaId) {
         this.programaSeleccionado = element;
         this.estudiantesSeleccionados = element.estudiantes;
+  
+        // Asignamos directamente el estudiante por defecto (primer estudiante en el array)
+        this.estudianteSeleccionado = this.estudiantesSeleccionados[0] || { id: "", nombre: "", saberPro: { lecturaCritica: 0, ingles: 0, ciudadanas: 0, razonamiento: 0, comunicacionEscrita: 0 }};
         break;
       }
     }
   }
 
-  onChangeEstudiante(event: any): void {
-    this.estudianteId = event.target.value;
-    this.buscarEstudiante(this.estudianteId);
+  onEstudianteChange(event: any): void {
+    console.log('onEstudianteChange called:', event);
+    const estudianteId = event.target.value;
+    this.buscarEstudiante(estudianteId);
   }
   
   buscarEstudiante(estudianteId: string): void {
-    // Lógica para buscar el estudiante por ID y asignarlo a estudianteSeleccionado
-    // Puedes implementar esta lógica según tu necesidad.
+    const estudiante = this.estudiantesSeleccionados.find(est => est.id === estudianteId);
+  
+    if (estudiante) {
+      this.estudianteSeleccionado = estudiante;
+    } else {
+      // Si el estudiante no se encuentra, asigna el estudiante por defecto con puntajes en cero
+      this.estudianteSeleccionado = {
+        id: estudianteId,
+        nombre: "", // Puedes asignar un nombre por defecto o dejarlo vacío
+        saberPro: { lecturaCritica: 0, ingles: 0, ciudadanas: 0, razonamiento: 0, comunicacionEscrita: 0 }
+      };
+    }
   }
-
 }
-
-
-
